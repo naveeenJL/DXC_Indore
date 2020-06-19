@@ -5,12 +5,12 @@ import java.io.BufferedReader;
 public class AXIS implements RBI{
 	public int ROI = 7;
 	public int MIN_FD_AMOUNT = 8000;
-	public int MIN_YEARS = 7;
+	public int MIN_YEARS = 3;
 	public int MIN_BAL = 10000;
 	public int BAL = MIN_BAL;
 	
 	@Override
-	public void openAccount(BufferedReader buff) {
+	public void openAccount(BufferedReader buff, Customer customer) {
 		try {
 			System.out.println("Enter your Name");
 			String name = buff.readLine();
@@ -18,6 +18,14 @@ public class AXIS implements RBI{
 			String email = buff.readLine();
 			System.out.println("Enter your Phone");
 			String phone = buff.readLine();
+
+
+			customer.setName(name);
+			customer.setEmail(email);
+			customer.setPhone(phone);
+			
+			int mOpenAccountCounter = customer.getOpenAccountCounter()+1;
+			customer.setOpenAccountCounter(mOpenAccountCounter);
 			
 			System.out.println("Congratulations your Account is Opened !!");
 			System.out.println("your Details are \nName: "+name+"\nEmail: "+email+"\nPhone: "+phone);
@@ -28,11 +36,14 @@ public class AXIS implements RBI{
 	}
 
 	@Override
-	public void deposit(BufferedReader buff) {
+	public void deposit(BufferedReader buff, Customer customer) {
 		try {
 			System.out.println("Enter the amount to be deposited");
 			String amount = buff.readLine();
 			BAL = BAL + Integer.parseInt(amount);
+			customer.setBalance(String.valueOf(BAL));
+			int mDepositCounter = customer.getDepositCounter()+1;
+			customer.setDepositCounter(mDepositCounter);
 			System.out.println("Balance is "+BAL);
 		}
 		catch(Exception e) {
@@ -41,7 +52,7 @@ public class AXIS implements RBI{
 	}
 
 	@Override
-	public void withdrawl(BufferedReader buff) {
+	public void withdrawl(BufferedReader buff, Customer customer) {
 		try {
 			System.out.println("Enter the amount to be Withdrawl");
 			String amount = buff.readLine();
@@ -49,6 +60,9 @@ public class AXIS implements RBI{
 				BAL = BAL - Integer.parseInt(amount);
 			else
 				System.out.println("MIN BAL is not maintained after withdrawl !!");
+			customer.setBalance(String.valueOf(BAL));
+			int mWithdrawlCounter = customer.getWithdrawlCounter()+1;
+			customer.setWithdrawlCounter(mWithdrawlCounter);
 			System.out.println("Balance is "+BAL);
 		}
 		catch(Exception e) {
@@ -57,16 +71,18 @@ public class AXIS implements RBI{
 	}
 
 	@Override
-	public void openFD(BufferedReader buff) {
+	public void openFD(BufferedReader buff, Customer customer) {
 		try {
 			System.out.println("Enter your FD amount");
 			String fdamount = buff.readLine();
 			System.out.println("Enter Term Duration of FD");
 			String years = buff.readLine();
-			if(Integer.parseInt(fdamount) > MIN_FD_AMOUNT && Integer.parseInt(years) > MIN_YEARS) {
+			if(Integer.parseInt(fdamount) >= MIN_FD_AMOUNT && Integer.parseInt(years) >= MIN_YEARS) {
 				int TotalFDAmount = Integer.parseInt(fdamount) + (ROI*Integer.parseInt(fdamount));
 				for(int i=2; i<Integer.parseInt(years); i++)
 					TotalFDAmount = TotalFDAmount + (ROI*TotalFDAmount);
+				int mOpenCounter = customer.getOpenFDCounter()+1;
+				customer.setOpenFDCounter(mOpenCounter);
 				System.out.println("Your Total FD Amount after "+years+" years will be "+TotalFDAmount);
 			}
 				
