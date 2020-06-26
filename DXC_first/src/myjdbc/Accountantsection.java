@@ -53,26 +53,108 @@ public class Accountantsection {
 	public void editstudent(BufferedReader buff) throws Exception {
 		// TODO Auto-generated method stub
 		Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/studentsdb?serverTimezone=UTC","nav", "1234");
-		Statement stmt=con.createStatement();
-		PreparedStatement stmtUpdate = con.prepareStatement("update student  ");
-		stmtUpdate.setString(1, buff.readLine());
-		stmtUpdate.setString(2, buff.readLine());
-		stmtUpdate.setString(3, buff.readLine());
-		stmtUpdate.setString(4, buff.readLine());
-		stmtUpdate.setString(5, buff.readLine());
-		stmtUpdate.setString(6, buff.readLine());
-		stmtUpdate.setString(7, buff.readLine());
-		stmtUpdate.setString(8, buff.readLine());
-		stmtUpdate.setString(9, buff.readLine());
-		stmtUpdate.setString(10, buff.readLine());
-		stmtUpdate.setString(11, buff.readLine());
-	}
+		PreparedStatement stmtUpdate1 = con.prepareStatement("update student   where student_name=?");
+		System.out.println("enter student name which has to edit");
+		String name=buff.readLine();
+		stmtUpdate1.setString(1, name);
+		System.out.println("Enter your Choice : ");
+		System.out.println(" \n1. update email\n2. Update Course\n3. Update Fees\n4. Update Payment Paid\n5. Update Payment Due\n6. Update Address\n7. Update City\n8. Update State\n9. Update Country\n10. Update ContactNo");
+		String ch=buff.readLine();
+		
+		switch (Integer.parseInt(ch)) 
+		{
+		case 1:System.out.println("update email");
+		String email=buff.readLine();
+		PreparedStatement stmtUpdate11 = con.prepareStatement("update student set  student_email=? where student_name=?");
+		stmtUpdate11.setString(1, email); 
+		stmtUpdate11.setString(2, name); 
+		System.out.println(stmtUpdate11.executeUpdate()+ " No of Student Details Updated");
+	
+		break;
+		case 2:System.out.println("update course");
+		String student_course=buff.readLine();
+	
+	    PreparedStatement stmtUpdate111 = con.prepareStatement("update student set student_course=? where student_name=?");
+		stmtUpdate111.setString(1, student_course); 
+		stmtUpdate111.setString(2, name); 
+		System.out.println(stmtUpdate111.executeUpdate()+ " No of Student Details Updated");
+	
+			break ;
+		case 3: 	System.out.println("update fee");
+			int student_fee=buff.read();
+	    PreparedStatement stmtUpdate1111 = con.prepareStatement("update student set student_fee=? where student_name=?");
+		stmtUpdate1111.setInt(1, student_fee); 
+		stmtUpdate1111.setString(2, name); 
+		System.out.println(stmtUpdate1111.executeUpdate() + " No of Student Details Updated");
+	
+			break ;
+		case 4: System.out.println("update paid");
+		int student_paid=buff.read();
+	    PreparedStatement stmtUpdate11111 = con.prepareStatement("update student set  student_paid=? where student_name=?");
+		stmtUpdate11111.setInt(1, student_paid); 
+		stmtUpdate11111.setString(2, name); 
+		System.out.println(stmtUpdate11111.executeUpdate() + " No of Student Details Updated");
+	
+			break ;
+		case 5: 	System.out.println("update due");
+		int student_due=buff.read();
+	    PreparedStatement stmtUpdate111111 = con.prepareStatement("update student set student_due=? where student_name=?");
+		stmtUpdate111111.setInt(1, student_due); 
+		stmtUpdate111111.setString(2, name); 
+		System.out.println(stmtUpdate111111.executeUpdate() + " No of Student Details Updated");
+	
+			break ;
+		case 6: System.out.println("update address");
+		String student_address=buff.readLine();
+	    PreparedStatement stmtUpdate1111111 = con.prepareStatement("update student set student_address=? where student_name=?");
+		stmtUpdate1111111.setString(1, student_address); 
+		stmtUpdate1111111.setString(2, name); 
+		System.out.println(stmtUpdate1111111.executeUpdate() + " No of Student Details Updated");
+	
+			break ;
+		case 7: System.out.println("update city");
+			String student_city=buff.readLine();
+	    PreparedStatement stmtUpdate11111111 = con.prepareStatement("update student set student_city=? where student_name=?");
+		stmtUpdate11111111.setString(1, student_city); 
+		stmtUpdate11111111.setString(2, name); 
+		System.out.println(stmtUpdate11111111.executeUpdate() + " No of Student Details Updated");
+	
+			break ;
+		case 8: System.out.println("update state");
+		String student_state=buff.readLine();
+	    PreparedStatement stmtUpdate111111111 = con.prepareStatement("update student set student_state=? where student_name=?");
+		stmtUpdate111111111.setString(1, student_state); 
+		stmtUpdate111111111.setString(2, name); 
+		System.out.println(stmtUpdate111111111.executeUpdate() + " No of Student Details Updated");
+	
+			break ;
+		case 9: System.out.println("update country");
+			String student_country=buff.readLine();
+	    PreparedStatement stmtUpdate1111111111 = con.prepareStatement("update student set  student_country=? where student_name=?");
+		stmtUpdate1111111111.setString(1, student_country); 
+		stmtUpdate1111111111.setString(2, name); 
+		System.out.println(stmtUpdate1111111111.executeUpdate() + " No of Student Details Updated");
+	
+			break ;
+		case 10: System.out.println("update contactno");
+			int student_contactno=buff.read();
+	    PreparedStatement stmtUpdate11111111111 = con.prepareStatement("update student set student_contactno=? where student_name=?");
+		stmtUpdate11111111111.setInt(1, student_contactno); 
+		stmtUpdate11111111111.setString(2, name); 
+		System.out.println(stmtUpdate11111111111.executeUpdate() + " No of Student Details Updated");
+	
+			break ;
+			
+		}
+		
+		}
+	
 
 	public void dueefees(BufferedReader buff) throws Exception {
 		// TODO Auto-generated method stub
 		Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/studentsdb?serverTimezone=UTC","nav", "1234");
 		Statement stmt=con.createStatement();
-		ResultSet rs=stmt.executeQuery("select student_due from student");
+		ResultSet rs=stmt.executeQuery("select student_name,student_due from student where student_due!=0");
 		while(rs.next())
 			System.out.println(rs.getString(6));
 		con.close();

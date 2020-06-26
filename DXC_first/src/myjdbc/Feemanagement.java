@@ -47,7 +47,8 @@ public class Feemanagement {
 			do {
 				
 			System.out.println("Welcome to FEES MANAGEMENT SYSTEM\n");
-			System.out.println("SELECT your USER choice\n1.Admin\n2.Accountant Section\n");
+			System.out.println("SELECT your USE2"
+					+ "R choice\n1.Admin\n2.Accountant Section\n");
 			String muserchoice = mObject.buff.readLine();
 
 			
@@ -105,6 +106,7 @@ public class Feemanagement {
 				continueChoice = mObject.buff.readLine();
 				if (continueChoice.equalsIgnoreCase("No"))
 					transaction = false;
+					
 				}while(transaction);
 				break;
 				default: System.out.println("select atleast one task\n");
