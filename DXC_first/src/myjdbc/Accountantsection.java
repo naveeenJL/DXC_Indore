@@ -156,7 +156,7 @@ public class Accountantsection {
 		Statement stmt=con.createStatement();
 		ResultSet rs=stmt.executeQuery("select student_name,student_due from student where student_due!=0");
 		while(rs.next())
-			System.out.println(rs.getString(6));
+			System.out.println(rs.getString(1) + " " +rs.getString(6));
 		con.close();
 		
 		
