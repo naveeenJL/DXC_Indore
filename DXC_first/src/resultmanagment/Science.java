@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 
 public class Science implements Grading
 {
-	@Override
 	public void YourResult(BufferedReader buff,StudentDataBase sd)
 	{
 		try {

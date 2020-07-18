@@ -10,7 +10,6 @@ public class ICICI implements RBI{
 	public int MIN_BAL = 3000;
 	public int BAL = MIN_BAL;
 	
-	@Override
 	public void openAccount(BufferedReader buff, Customer customer) {
 		try {
 			System.out.println("Enter your Name");
@@ -35,7 +34,6 @@ public class ICICI implements RBI{
 		}
 	}
 
-	@Override
 	public void deposit(BufferedReader buff, Customer customer) {
 		try {
 			System.out.println("Enter the amount to be deposited");
@@ -51,7 +49,6 @@ public class ICICI implements RBI{
 		}
 	}
 
-	@Override
 	public void withdrawl(BufferedReader buff, Customer customer) {
 		try {
 			System.out.println("Enter the amount to be Withdrawl");
@@ -70,7 +67,6 @@ public class ICICI implements RBI{
 		}
 	}
 
-	@Override
 	public void openFD(BufferedReader buff, Customer customer) {
 		try {
 			System.out.println("Enter your FD amount");

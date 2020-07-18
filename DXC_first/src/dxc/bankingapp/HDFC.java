@@ -9,7 +9,6 @@ public class HDFC implements RBI{
 	public int MIN_BAL = 5000;
 	public int BAL = MIN_BAL;
 	
-	@Override
 	public void openAccount(BufferedReader buff, Customer customer) {
 		try {
 			System.out.println("Enter your Name");
@@ -34,7 +33,6 @@ public class HDFC implements RBI{
 		}
 	}
 
-	@Override
 	public void deposit(BufferedReader buff, Customer customer) {
 		try {
 			System.out.println("Enter the amount to be deposited");
@@ -50,7 +48,6 @@ public class HDFC implements RBI{
 		}
 	}
 
-	@Override
 	public void withdrawl(BufferedReader buff, Customer customer) {
 		try {
 			System.out.println("Enter the amount to be Withdrawl");
@@ -69,7 +66,6 @@ public class HDFC implements RBI{
 		}
 	}
 
-	@Override
 	public void openFD(BufferedReader buff, Customer customer) {
 		try {
 			System.out.println("Enter your FD amount");
